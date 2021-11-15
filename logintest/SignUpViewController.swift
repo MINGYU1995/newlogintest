@@ -12,16 +12,16 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var txtUserEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtPasswordConfirm: UITextField!
-    @IBOutlet weak var lblPasswordConfirmed: UILabel!
+ //   @IBOutlet weak var lblPasswordConfirmed: UILabel!
     @IBOutlet weak var pkvInteresting: UIPickerView!
     @IBOutlet weak var imgProfilePicture: UIImageView!
     
     var ref: DatabaseReference!
     
-    let interestingList = ["치킨", "피자", "탕수육"]
+    let interestingList = ["1", "2", "3"]
     var selectedInteresting: String!
      
-    
+
     override func viewDidLoad() {
            super.viewDidLoad()
         
@@ -37,7 +37,7 @@ class SignUpViewController: UIViewController {
                ref = Database.database().reference()
                
                selectedInteresting = interestingList[0]
-               lblPasswordConfirmed.text = ""
+            // lblPasswordConfirmed.text = ""
        }
     
     
@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController {
         txtUserEmail.text = ""
         txtPassword.text = ""
         txtPasswordConfirm.text = ""
-        lblPasswordConfirmed.text = ""
+       // lblPasswordConfirmed.text = ""
         pkvInteresting.selectedRow(inComponent: 0)
     }
     
@@ -150,17 +150,17 @@ extension SignUpViewController: UITextFieldDelegate {//end
         func setLabelPasswordConfirm(_ password: String, _ passwordConfirm: String)  {
             
             guard passwordConfirm != "" else {
-                lblPasswordConfirmed.text = ""
+              //  lblPasswordConfirmed.text = ""
                 return
             }
             
-            if password == passwordConfirm {
-                lblPasswordConfirmed.textColor = .green
-                lblPasswordConfirmed.text = "패스워드가 일치합니다."
-            } else {
-                lblPasswordConfirmed.textColor = .red
-                lblPasswordConfirmed.text = "패스워드가 일치하지 않습니다."
-            }
+//            if password == passwordConfirm {
+//                lblPasswordConfirmed.textColor = .green
+//                lblPasswordConfirmed.text = "패스워드가 일치합니다."
+//            } else {
+//                lblPasswordConfirmed.textColor = .red
+//                lblPasswordConfirmed.text = "패스워드가 일치하지 않습니다."
+//            }
         }
         
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -185,20 +185,11 @@ extension SignUpViewController: UITextFieldDelegate {//end
                 guard let password = txtPassword.text,
                       let passwordConfirmBefore = txtPasswordConfirm.text else {
                     return true
-                }
-                
-                
-//                let str = passwordConfirmBefore
-//                let passwordConfirm = string.isEmpty ? str.passwordConfirmBefore[0..<(passwordConfirmBefore.count - 1)] :
-//                  //passwordConfirmBefore[0..<(passwordConfirmBefore.count - 1)] :
-//                    passwordConfirmBefore + string
-//                 setLabelPasswordConfirm(password, passwordConfirm)
-//
             }
-            return true
         }
+            return true
     }
     
-   
+}
     
     
